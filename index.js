@@ -4,16 +4,6 @@ const form = document.getElementById("form");
 const search = document.getElementById("search");
 const movieList = document.querySelector(".movie");
 
-// getMovies()
-
-// async function  getMovies(apiUrl){
-//     const res = await fetch(apiUrl);
-//     const data = await res.json();
-//     showMovies(data.results);
-
-    
-//     movieList.innerHTML = data.Search.map((movie) => movieHTML(movie)).join("");
-// }
 
 async function getMovies(query) {
     const res = await fetch(`${apiUrl}&s=${query}`);

@@ -43,20 +43,21 @@ form{
     justify-content: center;
     height: 50px
 }
-#Search{
+#search{
     height: 40px;
     width: 300px;
     position: relative;
 }
-#icon{
-    position: absolute;
-    right: 500px;
+button{
     
     cursor: pointer;
     font-size: 25px;
+    height: 40px;
+    width: 100px;
+    margin-left: 10px;
     color: rgb(237, 35, 163);
 }
-#icon:hover{
+button:hover{
     color: blue;
     font-size: 30px;
 }
