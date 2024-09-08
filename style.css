@@ -66,7 +66,7 @@ form{
     display: flex;
     align-items: center;  
 }
-#main{
+main{
     display: flex;
     flex-wrap: wrap;
     text-align: center;
