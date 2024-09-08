@@ -28,75 +28,52 @@ async function getMovies(query) {
 getMovies();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-function showMovies(movies){
-    main.innerHTML = ""
+function showMovies(movies) {
+    main.innerHTML = ""; // Clear previous movies
+  
     movies.forEach((movie) => {
-        const { title, Poster, Year, Ratings, Plot}=movie
-
-      const movieEl = document.createElement("div")
-      movieEl.classList.add("movie")
-      movieEl.innerHTML= 
-       
-    ` <div class="movie">
-            <img src="${Poster}" alt="${title}">
-            <div class="movie__info">
-                <h3>${title}</h3>
-                <span class="${getClassByRate(Ratings)}">${Ratings}</span>
-                <h2>"${Year}"</h2>
-            </div>
-            <div class="over-view">
-            <h3>"${Plot}"</h3>
-
-            </div>
-
-        </div>`
-     main.appendChild(movieEl)
-        
-    });;
-}
-function getClassByRate(Ratings){
-    if(Ratings>=8){
-        return "green"
+      const { Title, Poster, Year, imdbRating, Plot } = movie;
+  
+      const movieEl = document.createElement("div");
+      movieEl.classList.add("movie");
+      movieEl.innerHTML = `
+        <div class="movie">
+          <img src="${Poster}" alt="${Title}">
+          <div class="movie__info">
+            <h3>${Title}</h3>
+            <span class="${getClassByRate(imdbRating)}">${imdbRating}</span>
+            <h2>${Year}</h2>
+          </div>
+          <div class="overview">
+            <h3>${Plot}</h3>
+          </div>
+        </div>`;
+  
+      main.appendChild(movieEl);
+    });
+  }
+  
+  function getClassByRate(Ratings) {
+    if (Ratings >= 8) {
+      return "green";
+    } else if (Ratings >= 5) {
+      return "orange";
+    } else {
+      return "red";
     }
-    else if (Ratings>=5){
-        return "orange"
+  }
+  
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const searchTerm = search.value;
+  
+    if (searchTerm && searchTerm.trim() !== "") {
+      getMovies(searchTerm);
+    } else {
+      window.location.reload();
     }
-    
-        else{
-            return "red"
-        }
-    }
+  });
+  
 
-form.addEventListener("submit",(event)=>{
-    event.preventDefault()
-    const searchTerm = search.value
-    if(searchTerm && search!==""){
-        showMovies()
-
-    }
-    
-    else{
-        window.location.reload
-    }
-})
-
-
-
-
-
-
-
-
+ 
 
