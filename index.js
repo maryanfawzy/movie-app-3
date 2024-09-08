@@ -1,19 +1,44 @@
 const apiKey = "c8c68236"
-const apiUrl = " http://www.omdbapi.com/?i=tt3896198&apikey=c8c68236"
+const apiUrl = "http://www.omdbapi.com/?i=tt3896198&apikey=c8c68236"
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 const movieList = document.querySelector(".movie");
 
-getMovies()
+// getMovies()
 
-async function  getMovies(apiUrl){
-    const res = await fetch(apiUrl);
-    const data = await res.json();
-    showMovies(data.results);
+// async function  getMovies(apiUrl){
+//     const res = await fetch(apiUrl);
+//     const data = await res.json();
+//     showMovies(data.results);
 
     
-    movieList.innerHTML = data.Search.map((movie) => movieHTML(movie)).join("");
-}
+//     movieList.innerHTML = data.Search.map((movie) => movieHTML(movie)).join("");
+// }
+
+async function getMovies(query) {
+    const res = await fetch(`${apiUrl}&s=${query}`);
+    const data = await res.json();
+  
+    if (data.Search) {
+      showMovies(data.Search);
+    } else {
+      main.innerHTML = "<h2>No Movies Found</h2>";
+    }
+  }
+getMovies();
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function showMovies(movies){
     main.innerHTML = ""
